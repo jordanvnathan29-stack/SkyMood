@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SkyMood</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Loved+by+the+King&family=Quattrocento:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <h1 id="out-status" class="quattrocento-regular">Please enter your coordinates.</h1>
+  <h2 class="quattrocento-regular">Press the button "Get Sky" next!</h2>
+
+  <div class="panel">
+    <form id="coord-form">
+      <label for="lat">Latitude</label>
+      <input type="number" id="lat" step="any" min="-90" max="90" value="35.68" required>
+
+      <label for="lon">Longitude</label>
+      <input type="number" id="lon" step="any" min="-180" max="180" value="139.69" required>
+
+      <button type="submit">Get Sky</button>
+      <button type="button" id="locate">Use my location</button>
+    </form>
+
+    <p class="loved-by-the-king-regular">Temperature: <span id="out-temp"></span></p>
+    <p class="loved-by-the-king-regular">Cloud cover: <span id="out-cloud"></span></p>
+    <p class="loved-by-the-king-regular">Wind: <span id="out-wind"></span></p>
+    <p class="loved-by-the-king-regular">Sky: <span id="out-day"></span></p>
+    <p class="loved-by-the-king-regular">Local time: <span id="out-time"></span></p>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
+

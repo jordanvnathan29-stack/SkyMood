@@ -1,0 +1,72 @@
+
+body {
+  background-color: rgb(155, 212, 246);
+  margin: 30px;
+  text-align: center;
+  font-family: "Quattrocento", serif;
+}
+
+.quattrocento-regular {
+  font-family: "Quattrocento", serif;
+  font-weight: 400;
+}
+
+.loved-by-the-king-regular {
+  font-family: "Loved by the King", cursive;
+  font-weight: 400;
+  font-size: 24px;
+}
+
+h1 {
+  font-size: 36px;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+.panel {
+  max-width: 500px;
+  margin: 25px auto;
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.45);
+  border-radius: 15px;
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+input {
+  display: block;
+  width: 90%;
+  max-width: 300px;
+  margin: 8px auto;
+  padding: 10px;
+  border: 1px solid #777;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+button {
+  margin: 10px 5px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: #287db5;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #1d608c;
+}
+
+p {
+  margin: 15px 0;
+}
+
