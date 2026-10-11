@@ -38,7 +38,6 @@ document.getElementById("locate").addEventListener("click", () => {
     (position) => {
       latInput.value = position.coords.latitude.toFixed(4);
       lonInput.value = position.coords.longitude.toFixed(4);
-      form.requestSubmit();
     },
     () => {
       statusText.textContent = "Location permission was denied. Type coordinates instead.";
