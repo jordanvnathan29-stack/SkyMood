@@ -1,7 +1,30 @@
+@property --sky-top {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #0f2027;
+}
+
+@property --sky-bottom {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #2c5364;
+}
+
+:root {
+  --sky-top: #0f2027;
+  --sky-bottom: #2c5364;
+  --ink: #eef3ff;
+  --panel: rgba(255, 255, 255, 0.18);
+  transition: --sky-top 1.8s ease, --sky-bottom 1.8s ease;
+}
 
 body {
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  margin: 30px;
+  margin: 0;
+  padding: 30px;
+  box-sizing: border-box;
+  min-height: 100vh;
+  background: linear-gradient(180deg, var(--sky-top), var(--sky-bottom)) fixed;
+  color: var(--ink);
   text-align: center;
   font-family: "Quattrocento", serif;
 }
@@ -29,8 +52,9 @@ h2 {
   max-width: 500px;
   margin: 25px auto;
   padding: 25px;
-  background: rgba(255, 255, 255, 0.45);
   border-radius: 15px;
+  background: var(--panel);
+  transition: background 0.8s ease;
 }
 
 label {
