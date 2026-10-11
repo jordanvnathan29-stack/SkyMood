@@ -34,8 +34,16 @@ public class Server {
                 new InetSocketAddress(port), 0);
 
         server.createContext("/api/weather", Server::weather);
-        server.createContext("/api/mood", Server::mood);
-        server.createContext("/", Server::staticFile);
+	server.createContext("/api/mood", Server::mood);
+	server.createContext("/healthz", exchange -> {
+    		byte[] body = "OK".getBytes(java.nio.charset.StandardCharsets.UTF_8);
+    		exchange.getResponseHeaders().set("Content-Type", "text/plain; charset=utf-8");
+    		exchange.sendResponseHeaders(200, body.length);
+    		try (var out = exchange.getResponseBody()) {
+        		out.write(body);
+    		}
+	});
+	server.createContext("/", Server::staticFile);
         server.start();
 
         System.out.println("Server started on port " + port);
@@ -236,13 +244,21 @@ public class Server {
                 : name.endsWith(".js") ? "text/javascript"
                 : name.endsWith(".css") ? "text/css"
                 : name.endsWith(".svg") ? "image/svg+xml"
+                : name.endsWith(".png") ? "image/png"
+                : name.endsWith(".jpg") || name.endsWith(".jpeg") ? "image/jpeg"
+                : name.endsWith(".ico") ? "image/x-icon"
                 : "application/octet-stream";
 
-        send(exchange, 200, Files.readString(file),
-                type + "; charset=utf-8");
+        byte[] body = Files.readAllBytes(file);
+        exchange.getResponseHeaders().set("Content-Type", type);
+        exchange.sendResponseHeaders(200, body.length);
+
+        try (var out = exchange.getResponseBody()) {
+            out.write(body);
+        }
     }
 
-    private static String readEnv(String name) {
+        private static String readEnv(String name) {
         String value = System.getenv(name);
 
         if (value != null && !value.isBlank()) {
